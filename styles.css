@@ -61,7 +61,7 @@ nav {
 }
 .nav-logo {
   font-family: var(--fh);
-  font-size: 18px;
+  font-size: 20px;
   font-style: italic;
   color: var(--g);
   letter-spacing: -0.2px;
@@ -72,7 +72,7 @@ nav {
   gap: 20px;
 }
 .nav-link {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--tx2);
   text-decoration: none;
   transition: color 0.15s;
@@ -82,7 +82,7 @@ nav {
 .nav-link:hover { color: var(--tx); }
 .nav-cta {
   font-family: var(--fm);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   background: var(--gm);
   border: 1px solid rgba(74, 222, 128, 0.22);
@@ -154,7 +154,7 @@ nav {
   padding: 6px 16px;
   border-radius: 20px;
   font-family: var(--fm);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--g);
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -185,7 +185,7 @@ nav {
 
 .hero-title {
   font-family: var(--fh);
-  font-size: clamp(38px, 7vw, 88px);
+  font-size: clamp(44px, 8vw, 100px);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -3px;
@@ -199,7 +199,7 @@ nav {
 }
 
 .hero-sub {
-  font-size: clamp(15px, 2vw, 20px);
+  font-size: clamp(17px, 2.2vw, 22px);
   color: var(--tx2);
   line-height: 1.6;
   max-width: 600px;
@@ -229,7 +229,7 @@ nav {
 }
 .cd-num {
   font-family: var(--fh);
-  font-size: clamp(26px, 4vw, 40px);
+  font-size: clamp(30px, 4.5vw, 46px);
   font-style: italic;
   color: var(--g);
   line-height: 1;
@@ -238,7 +238,7 @@ nav {
 }
 .cd-lbl {
   font-family: var(--fm);
-  font-size: 8px;
+  font-size: 9px;
   color: var(--tx3);
   margin-top: 4px;
   text-transform: uppercase;
@@ -246,7 +246,7 @@ nav {
 }
 .cd-sep {
   font-family: var(--fh);
-  font-size: 32px;
+  font-size: 36px;
   color: var(--tx3);
   align-self: center;
   margin-bottom: 18px;
@@ -272,7 +272,7 @@ nav {
   color: var(--tx);
   border-radius: 8px;
   padding: 12px 16px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: var(--fb);
   outline: none;
   transition: border-color 0.15s;
@@ -288,7 +288,7 @@ nav {
   border-radius: 8px;
   cursor: pointer;
   font-family: var(--fb);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   white-space: nowrap;
   transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
@@ -299,7 +299,7 @@ nav {
   box-shadow: 0 4px 16px rgba(74, 222, 128, 0.25);
 }
 .signup-note {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--tx3);
   text-align: center;
   font-family: var(--fm);
@@ -310,7 +310,7 @@ nav {
   background: var(--gm);
   border: 1px solid rgba(74, 222, 128, 0.2);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--g);
   text-align: center;
   margin-bottom: 10px;
@@ -334,7 +334,7 @@ nav {
   align-items: center;
   gap: 7px;
   font-family: var(--fm);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--tx3);
   text-transform: uppercase;
   letter-spacing: 0.6px;
@@ -355,7 +355,7 @@ nav {
 }
 .section-label {
   font-family: var(--fm);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--g2);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -364,14 +364,14 @@ nav {
 }
 .section-title {
   font-family: var(--fh);
-  font-size: clamp(26px, 4vw, 46px);
+  font-size: clamp(30px, 4.5vw, 52px);
   font-weight: 300;
   letter-spacing: -0.5px;
   color: var(--tx);
   margin-bottom: 8px;
 }
 .section-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--tx2);
   margin-bottom: 48px;
   line-height: 1.6;
@@ -382,8 +382,17 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
-@media (max-width: 700px) {
-  .pillars { grid-template-columns: 1fr; }
+@media (max-width: 960px) {
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .pillars .pillar:nth-child(3) { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .pillars .pillar:nth-child(3) { grid-column: auto; }
+  .pillar { padding: 24px; }
 }
 .pillar {
   background: var(--bg2);
@@ -413,7 +422,7 @@ nav {
 }
 .pillar-num {
   font-family: var(--fh);
-  font-size: 40px;
+  font-size: 46px;
   font-style: italic;
   color: rgba(255, 255, 255, 0.05);
   line-height: 1;
@@ -421,20 +430,20 @@ nav {
   letter-spacing: -2px;
 }
 .pillar-icon {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 14px;
   display: block;
 }
 .pillar-title {
   font-family: var(--fh);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
   color: var(--tx);
   margin-bottom: 8px;
   letter-spacing: -0.2px;
 }
 .pillar-desc {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--tx2);
   line-height: 1.65;
 }
@@ -442,7 +451,7 @@ nav {
   display: inline-block;
   margin-top: 16px;
   font-family: var(--fm);
-  font-size: 8.5px;
+  font-size: 10px;
   color: var(--tx3);
   border: 1px solid var(--bdr);
   padding: 3px 9px;
@@ -463,9 +472,11 @@ nav {
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .stats-inner { grid-template-columns: 1fr 1fr; }
   .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(-n+2) { border-bottom: 1px solid var(--bdr); }
+  .stat-item { padding: 20px 12px; }
 }
 .stat-item {
   text-align: center;
@@ -475,7 +486,7 @@ nav {
 .stat-item:last-child { border-right: none; }
 .stat-val {
   font-family: var(--fh);
-  font-size: clamp(30px, 5vw, 52px);
+  font-size: clamp(34px, 5.5vw, 58px);
   font-style: italic;
   color: var(--g);
   line-height: 1;
@@ -485,7 +496,7 @@ nav {
 }
 .stat-lbl {
   font-family: var(--fm);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--tx3);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -547,7 +558,7 @@ nav {
 }
 .tl-year {
   font-family: var(--fm);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--g);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -555,18 +566,18 @@ nav {
   font-weight: 500;
 }
 .tl-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--tx);
   margin-bottom: 4px;
 }
 .tl-detail {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--tx3);
   line-height: 1.4;
   padding: 0 8px;
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .tl-steps { flex-direction: column; gap: 28px; }
   .tl-steps::before { display: none; }
   .tl-dot { position: static; transform: none; margin: 0 auto 10px; }
@@ -603,19 +614,19 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 26px;
   margin: 0 auto 20px;
 }
 .newsletter-title {
   font-family: var(--fh);
-  font-size: clamp(24px, 4vw, 38px);
+  font-size: clamp(28px, 4.5vw, 44px);
   font-weight: 300;
   color: var(--tx);
   letter-spacing: -0.4px;
   margin-bottom: 10px;
 }
 .newsletter-sub {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--tx2);
   line-height: 1.65;
   margin-bottom: 32px;
@@ -637,7 +648,7 @@ nav {
   color: var(--tx);
   border-radius: 8px;
   padding: 12px 16px;
-  font-size: 13px;
+  font-size: 15px;
   font-family: var(--fb);
   outline: none;
   transition: border-color 0.15s;
@@ -652,7 +663,7 @@ nav {
   color: var(--tx2);
   border-radius: 8px;
   padding: 12px 16px;
-  font-size: 13px;
+  font-size: 15px;
   font-family: var(--fb);
   outline: none;
   cursor: pointer;
@@ -669,7 +680,7 @@ nav {
   border-radius: 8px;
   cursor: pointer;
   font-family: var(--fb);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   transition: background-color 0.15s, box-shadow 0.15s;
 }
@@ -686,7 +697,7 @@ nav {
 }
 .nl-tag {
   font-family: var(--fm);
-  font-size: 9px;
+  font-size: 10px;
   color: var(--tx3);
   border: 1px solid var(--bdr);
   padding: 3px 10px;
@@ -708,13 +719,13 @@ nav {
   border: 1px solid rgba(74, 222, 128, 0.2);
   border-radius: 10px;
   color: var(--g);
-  font-size: 14px;
+  font-size: 15px;
   margin-top: 10px;
 }
 .sub-count {
   margin-top: 20px;
   font-family: var(--fm);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--tx3);
 }
 .sub-count span { color: var(--g); }
@@ -731,7 +742,7 @@ footer {
 }
 .footer-logo {
   font-family: var(--fh);
-  font-size: 15px;
+  font-size: 17px;
   font-style: italic;
   color: var(--g);
 }
@@ -742,7 +753,7 @@ footer {
 }
 .footer-link {
   font-family: var(--fm);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--tx3);
   text-decoration: none;
   transition: color 0.15s;
@@ -751,9 +762,95 @@ footer {
 .footer-link:hover { color: var(--tx2); }
 .footer-copy {
   font-family: var(--fm);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--tx3);
 }
+
+/* ── RESPONSIVE: tablet + mobile refinements ─────────────────── */
+
+/* Tablet (≤900px): tighten section padding, scale spacing */
+@media (max-width: 900px) {
+  .coming { padding: 80px 5%; }
+  .stats-section { padding: 60px 5%; }
+  .timeline { padding: 60px 5%; }
+  .newsletter { padding: 80px 5%; }
+}
+
+/* Mobile (≤600px): nav, hero, forms, social strip, footer */
+@media (max-width: 600px) {
+  /* Nav: drop the "Platform" link to make room, keep Newsletter + CTA */
+  nav { padding: 0 4%; gap: 8px; }
+  .nav-right { gap: 14px; }
+  .nav-link[href="#platform"] { display: none; }
+  .nav-cta { padding: 6px 12px; }
+
+  /* Hero spacing */
+  .hero { padding: 90px 5% 50px; }
+  .hero-title { letter-spacing: -1.5px; }
+
+  /* Countdown: smaller boxes + smaller separators so all 4 fit on phones */
+  .countdown { gap: 4px; }
+  .cd-unit {
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 12px 6px;
+    max-width: 80px;
+  }
+  .cd-sep { font-size: 22px; margin-bottom: 14px; }
+
+  /* Hero signup: stack input + button vertically (button no longer crammed) */
+  .signup-form { flex-direction: column; gap: 10px; }
+  .signup-btn { width: 100%; padding: 14px; }
+
+  /* Social proof: allow wrapping instead of clipping */
+  .social-strip {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 12px 18px;
+  }
+
+  /* Newsletter: stack the first/last name row */
+  .nl-name-row { flex-direction: column; gap: 10px; }
+
+  /* Footer: center everything when stacked */
+  footer {
+    justify-content: center;
+    text-align: center;
+    padding: 32px 5%;
+  }
+  .footer-links { justify-content: center; }
+}
+
+/* Small phones (≤380px): final squeeze */
+@media (max-width: 380px) {
+  nav { padding: 0 4%; }
+  .nav-right { gap: 10px; }
+  .nav-link { font-size: 13px; }
+  .nav-cta { font-size: 12px; padding: 5px 10px; }
+  .nav-logo { font-size: 18px; }
+
+  /* Countdown: two rows of two on the smallest phones */
+  .countdown { flex-wrap: wrap; max-width: 280px; margin-left: auto; margin-right: auto; margin-bottom: 36px; }
+  .cd-unit { flex: 1 1 calc(50% - 16px); max-width: none; }
+  .cd-sep { display: none; }
+
+  .hero { padding: 80px 4% 40px; }
+  .coming, .timeline, .newsletter { padding-left: 4%; padding-right: 4%; }
+}
+
+/* Large desktops (≥1400px): cap content widths so things don't sprawl */
+@media (min-width: 1400px) {
+  .hero-inner { max-width: 920px; }
+  .coming { max-width: 1200px; }
+  .stats-inner { max-width: 1100px; }
+  .timeline { max-width: 1100px; }
+}
+
+/* Landscape phones: keep hero from feeling cramped vertically */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 90px 5% 50px; }
+}
+
 
 /* ── ACCESSIBILITY ── */
 @media (prefers-reduced-motion: reduce) {
