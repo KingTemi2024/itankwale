@@ -129,6 +129,19 @@ Change that one line and the countdown updates everywhere.
 
 ---
 
+## Performance notes
+
+The site is optimised to keep memory and CPU low even with the tab left open for hours:
+
+- The hero's grid background is **static** (it was previously animated continuously, which was the biggest GPU/memory cost — every frame the whole viewport repainted).
+- The countdown's `setInterval` **pauses** when the tab is hidden (`visibilitychange`) and when the countdown is scrolled off-screen (IntersectionObserver). It resumes on return.
+- The countdown only writes to the DOM when a value actually changed, so unchanged digits don't trigger layout work.
+- All `pulse` animations on dots run **only while their element is in the viewport** — managed via a `.pulse-on` class added/removed by JS.
+- Scroll-reveal observers `unobserve()` each element after firing instead of holding references.
+- `backdrop-filter` on the nav is opt-in via `@supports` and uses a smaller blur radius (8px vs 16px), with a solid fallback.
+- `contain: layout paint` on the hero, pillars, and newsletter sections so changes inside don't invalidate the rest of the page.
+- Tag clicks use one delegated listener instead of one per tag.
+
 ## Browser support
 
 Modern evergreen browsers (Chrome, Firefox, Safari, Edge). Uses `IntersectionObserver`, `backdrop-filter`, and CSS custom properties — all widely supported. Honours `prefers-reduced-motion`.

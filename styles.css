@@ -47,10 +47,17 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10, 10, 10, 0.95);
+  /* Solid-ish fallback. Backdrop blur is opt-in below — it was forcing the GPU
+     to re-blur the page on every scroll/animation frame. */
+  background: rgba(10, 10, 10, 0.92);
   border-bottom: 1px solid var(--bdr);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+}
+@supports (backdrop-filter: blur(8px)) {
+  nav {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 .nav-logo {
   font-family: var(--fh);
@@ -83,7 +90,7 @@ nav {
   padding: 6px 16px;
   border-radius: 6px;
   text-decoration: none;
-  transition: all 0.15s;
+  transition: background-color 0.15s, border-color 0.15s;
 }
 .nav-cta:hover {
   background: rgba(74, 222, 128, 0.2);
@@ -101,7 +108,12 @@ nav {
   padding: 80px 5% 60px;
   position: relative;
   overflow: hidden;
+  /* Isolate paint/layout so changes inside don't invalidate the rest of the page. */
+  contain: layout paint;
+  isolation: isolate;
 }
+
+/* Static grid pattern (was animated infinitely — biggest GPU/memory cost). */
 .hero::before {
   content: '';
   position: absolute;
@@ -110,12 +122,10 @@ nav {
     linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-  animation: gridShift 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
 }
-@keyframes gridShift {
-  from { transform: translateY(0); }
-  to   { transform: translateY(60px); }
-}
+
 .hero::after {
   content: '';
   position: absolute;
@@ -127,6 +137,7 @@ nav {
   left: 50%;
   transform: translate(-50%, -60%);
   pointer-events: none;
+  z-index: 0;
 }
 .hero-inner {
   position: relative;
@@ -150,16 +161,22 @@ nav {
   margin-bottom: 32px;
   animation: fadeUp 0.6s ease both;
 }
+
+/* Pulse only animates while .pulse-on is present.
+   JS adds it when on-screen and removes it when off-screen. */
 .pulse-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--g);
+}
+.pulse-dot.pulse-on {
   animation: pulse 2s ease-in-out infinite;
 }
+
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.4; transform: scale(0.8); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
 }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -259,6 +276,7 @@ nav {
   font-family: var(--fb);
   outline: none;
   transition: border-color 0.15s;
+  min-width: 0;
 }
 .signup-input::placeholder { color: var(--tx3); }
 .signup-input:focus { border-color: rgba(74, 222, 128, 0.35); }
@@ -273,7 +291,7 @@ nav {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
-  transition: all 0.15s;
+  transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 .signup-btn:hover {
   background: var(--g2);
@@ -375,6 +393,7 @@ nav {
   transition: border-color 0.2s, transform 0.2s;
   position: relative;
   overflow: hidden;
+  contain: layout paint;
 }
 .pillar::before {
   content: '';
@@ -511,7 +530,7 @@ nav {
   border: 2px solid rgba(74, 222, 128, 0.3);
   background: var(--bg);
   z-index: 2;
-  transition: all 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 .tl-step.done .tl-dot {
   background: var(--g);
@@ -521,7 +540,10 @@ nav {
   background: var(--g);
   border-color: var(--g);
   box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.12);
-  animation: pulse 2s infinite;
+}
+/* Pulse only when JS has flagged the dot as on-screen. */
+.tl-step.now .tl-dot.pulse-on {
+  animation: pulse 2s ease-in-out infinite;
 }
 .tl-year {
   font-family: var(--fm);
@@ -557,6 +579,7 @@ nav {
   text-align: center;
   position: relative;
   overflow: hidden;
+  contain: layout paint;
 }
 .newsletter::before {
   content: '';
@@ -619,6 +642,7 @@ nav {
   outline: none;
   transition: border-color 0.15s;
   width: 100%;
+  min-width: 0;
 }
 .nl-input::placeholder { color: var(--tx3); }
 .nl-input:focus { border-color: rgba(74, 222, 128, 0.35); }
@@ -647,7 +671,7 @@ nav {
   font-family: var(--fb);
   font-size: 14px;
   font-weight: 600;
-  transition: all 0.15s;
+  transition: background-color 0.15s, box-shadow 0.15s;
 }
 .nl-btn:hover {
   background: var(--g2);
@@ -668,7 +692,7 @@ nav {
   padding: 3px 10px;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
   user-select: none;
 }
 .nl-tag.selected {
